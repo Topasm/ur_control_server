@@ -1,0 +1,12 @@
+---
+string[] name
+
+float64[] present_position
+float64[] present_speed
+float64[] present_load
+float64[] temperature
+bool[] compliant
+float64[] goal_position
+float64[] speed_limit
+float64[] torque_limit
+PidGains[] pid_gain

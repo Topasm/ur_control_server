@@ -1,0 +1,4 @@
+string[] name
+PidGains[] pid_gain
+---
+bool success

@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+
+message GetPose {
+  string id = 1;
+  double x = 2;
+  double y = 3;
+  double z = 4;
+  double rx = 5;
+  double ry = 6;
+  double rz = 7;
+
+}
+
+
+
+service JointService {
+    rpc GetPose(GetPoseRequest) returns (GetPoseResponse);
+
+}
