@@ -5,7 +5,7 @@ import grpc
 import robot_pose_pb2 as robot__pose__pb2
 
 
-class PoseStub(object):
+class PositionStub(object):
     """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
@@ -15,13 +15,13 @@ class PoseStub(object):
             channel: A grpc.Channel.
         """
         self.GetPose = channel.unary_unary(
-                '/robot_pose.Pose/GetPose',
-                request_serializer=robot__pose__pb2.GetPoseRequest.SerializeToString,
-                response_deserializer=robot__pose__pb2.GetPoseReply.FromString,
+                '/robot_pose.Position/GetPose',
+                request_serializer=robot__pose__pb2.GetPoseSend.SerializeToString,
+                response_deserializer=robot__pose__pb2.GetPoseAck.FromString,
                 )
 
 
-class PoseServicer(object):
+class PositionServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def GetPose(self, request, context):
@@ -31,21 +31,21 @@ class PoseServicer(object):
         raise NotImplementedError('Method not implemented!')
 
 
-def add_PoseServicer_to_server(servicer, server):
+def add_PositionServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'GetPose': grpc.unary_unary_rpc_method_handler(
                     servicer.GetPose,
-                    request_deserializer=robot__pose__pb2.GetPoseRequest.FromString,
-                    response_serializer=robot__pose__pb2.GetPoseReply.SerializeToString,
+                    request_deserializer=robot__pose__pb2.GetPoseSend.FromString,
+                    response_serializer=robot__pose__pb2.GetPoseAck.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'robot_pose.Pose', rpc_method_handlers)
+            'robot_pose.Position', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
  # This class is part of an EXPERIMENTAL API.
-class Pose(object):
+class Position(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
@@ -59,8 +59,8 @@ class Pose(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/robot_pose.Pose/GetPose',
-            robot__pose__pb2.GetPoseRequest.SerializeToString,
-            robot__pose__pb2.GetPoseReply.FromString,
+        return grpc.experimental.unary_unary(request, target, '/robot_pose.Position/GetPose',
+            robot__pose__pb2.GetPoseSend.SerializeToString,
+            robot__pose__pb2.GetPoseAck.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

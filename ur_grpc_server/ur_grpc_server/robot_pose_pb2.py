@@ -14,34 +14,34 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x10robot_pose.proto\x12\nrobot_pose\"_\n\x0cGetPoseReply\x12\n\n\x02id\x18\x01 \x01(\t\x12\t\n\x01x\x18\x02 \x01(\x01\x12\t\n\x01y\x18\x03 \x01(\x01\x12\t\n\x01z\x18\x04 \x01(\x01\x12\n\n\x02rx\x18\x05 \x01(\x01\x12\n\n\x02ry\x18\x06 \x01(\x01\x12\n\n\x02rz\x18\x07 \x01(\x01\"\x1c\n\x0eGetPoseRequest\x12\n\n\x02id\x18\x01 \x01(\t2G\n\x04Pose\x12?\n\x07GetPose\x12\x1a.robot_pose.GetPoseRequest\x1a\x18.robot_pose.GetPoseReplyb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x10robot_pose.proto\x12\nrobot_pose\"\x1d\n\nGetPoseAck\x12\x0f\n\x07success\x18\x01 \x01(\x08\"j\n\x0bGetPoseSend\x12\n\n\x02id\x18\x01 \x01(\t\x12\t\n\x01x\x18\x02 \x01(\x01\x12\t\n\x01y\x18\x03 \x01(\x01\x12\t\n\x01z\x18\x04 \x01(\x01\x12\n\n\x02qx\x18\x05 \x01(\x01\x12\n\n\x02qy\x18\x06 \x01(\x01\x12\n\n\x02qz\x18\x07 \x01(\x01\x12\n\n\x02qw\x18\x08 \x01(\x01\x32\x46\n\x08Position\x12:\n\x07GetPose\x12\x17.robot_pose.GetPoseSend\x1a\x16.robot_pose.GetPoseAckb\x06proto3')
 
 
 
-_GETPOSEREPLY = DESCRIPTOR.message_types_by_name['GetPoseReply']
-_GETPOSEREQUEST = DESCRIPTOR.message_types_by_name['GetPoseRequest']
-GetPoseReply = _reflection.GeneratedProtocolMessageType('GetPoseReply', (_message.Message,), {
-  'DESCRIPTOR' : _GETPOSEREPLY,
+_GETPOSEACK = DESCRIPTOR.message_types_by_name['GetPoseAck']
+_GETPOSESEND = DESCRIPTOR.message_types_by_name['GetPoseSend']
+GetPoseAck = _reflection.GeneratedProtocolMessageType('GetPoseAck', (_message.Message,), {
+  'DESCRIPTOR' : _GETPOSEACK,
   '__module__' : 'robot_pose_pb2'
-  # @@protoc_insertion_point(class_scope:robot_pose.GetPoseReply)
+  # @@protoc_insertion_point(class_scope:robot_pose.GetPoseAck)
   })
-_sym_db.RegisterMessage(GetPoseReply)
+_sym_db.RegisterMessage(GetPoseAck)
 
-GetPoseRequest = _reflection.GeneratedProtocolMessageType('GetPoseRequest', (_message.Message,), {
-  'DESCRIPTOR' : _GETPOSEREQUEST,
+GetPoseSend = _reflection.GeneratedProtocolMessageType('GetPoseSend', (_message.Message,), {
+  'DESCRIPTOR' : _GETPOSESEND,
   '__module__' : 'robot_pose_pb2'
-  # @@protoc_insertion_point(class_scope:robot_pose.GetPoseRequest)
+  # @@protoc_insertion_point(class_scope:robot_pose.GetPoseSend)
   })
-_sym_db.RegisterMessage(GetPoseRequest)
+_sym_db.RegisterMessage(GetPoseSend)
 
-_POSE = DESCRIPTOR.services_by_name['Pose']
+_POSITION = DESCRIPTOR.services_by_name['Position']
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  _GETPOSEREPLY._serialized_start=32
-  _GETPOSEREPLY._serialized_end=127
-  _GETPOSEREQUEST._serialized_start=129
-  _GETPOSEREQUEST._serialized_end=157
-  _POSE._serialized_start=159
-  _POSE._serialized_end=230
+  _GETPOSEACK._serialized_start=32
+  _GETPOSEACK._serialized_end=61
+  _GETPOSESEND._serialized_start=63
+  _GETPOSESEND._serialized_end=169
+  _POSITION._serialized_start=171
+  _POSITION._serialized_end=241
 # @@protoc_insertion_point(module_scope)

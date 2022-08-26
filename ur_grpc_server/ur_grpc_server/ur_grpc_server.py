@@ -10,11 +10,11 @@ import robot_pose_pb2_grpc
 
 import grpc
 
-class Pose(robot_pose_pb2_grpc.PoseServicer):
+class Position(robot_pose_pb2_grpc.PositionServicer):
     
     def GetPose(self, request, context):
-        print(request.id)
-        return robot_pose_pb2.PoseReply
+        print(request)
+        return robot_pose_pb2.GetPoseAck
 
 
 
@@ -23,7 +23,7 @@ if __name__ == "__main__":
 
     server = grpc.server(ThreadPoolExecutor(max_workers=10))
   
-    robot_pose_pb2_grpc.add_PoseServicer_to_server(Pose(), server)
+    robot_pose_pb2_grpc.add_PositionServicer_to_server(Position(), server)
 
     server.add_insecure_port('[::]:50051')
     server.start()
