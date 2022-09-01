@@ -8,7 +8,7 @@ import rclpy
 from rclpy.node import Node
 import robot_pose_pb2
 import robot_pose_pb2_grpc
-from geometry_msgs.msg import PoseStamped
+from geometry_msgs.msg import TwistStamped
 
 
 import grpc
@@ -18,19 +18,19 @@ class Position(robot_pose_pb2_grpc.PositionServicer, Node):
 
     def __init__(self):
         super().__init__('simple_servo_twist_pub')
-        self.publisher_ = self.create_publisher(PoseStamped, '/target_pose', 1)
+        self.publisher_ = self.create_publisher(TwistStamped, '/servo_node/delta_twist_cmd', 1)
     def GetPose(self, request, context):
         print(request)
         msg = PoseStamped()
         #data from unity
-        msg.header.frame_id = "wrist_3_link"
-        msg.pose.position.x = request.x
-        msg.pose.position.y = request.y
-        msg.pose.position.z = request.z +0.5
-        msg.pose.orientation.x = request.qx
-        msg.pose.orientation.y = request.qy
-        msg.pose.orientation.z = request.qz
-        msg.pose.orientation.w = request.qw
+        #msg.header.frame_id = "tool0"
+        msg.twist.linear.x = request.x
+        msg.twist.linear.y = request.y
+        msg.twist.linear.z = request.z
+        msg.twist.angular.x = request.qx
+        msg.twist.angular.y = request.qy
+        msg.twist.angular.z = request.qz
+       # msg.twist.orientation.w = request.qw
         self.publisher_.publish(msg)
         # print(request)
         return robot_pose_pb2.GetPoseAck
