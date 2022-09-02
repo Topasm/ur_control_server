@@ -21,7 +21,7 @@ class Position(robot_pose_pb2_grpc.PositionServicer, Node):
         self.publisher_ = self.create_publisher(TwistStamped, '/servo_node/delta_twist_cmd', 1)
     def GetPose(self, request, context):
         print(request)
-        msg = PoseStamped()
+        msg = TwistStamped()
         #data from unity
         #msg.header.frame_id = "tool0"
         msg.twist.linear.x = request.x
