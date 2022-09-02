@@ -18,19 +18,23 @@ class Position(robot_pose_pb2_grpc.PositionServicer, Node):
 
     def __init__(self):
         super().__init__('simple_servo_twist_pub')
-        self.publisher_ = self.create_publisher(TwistStamped, '/servo_node/delta_twist_cmd', 1)
+        self.publisher_ = self.create_publisher(TwistStamped, '/servo_node/delta_twist_cmds', 1)
     def GetPose(self, request, context):
         print(request)
         msg = TwistStamped()
         #data from unity
-        #msg.header.frame_id = "tool0"
+
+        
         msg.twist.linear.x = request.x
         msg.twist.linear.y = request.y
         msg.twist.linear.z = request.z
         msg.twist.angular.x = request.qx
         msg.twist.angular.y = request.qy
         msg.twist.angular.z = request.qz
-       # msg.twist.orientation.w = request.qw
+        # msg.pose.orientation.x = 0.1451937
+        # msg.pose.orientation.y = 0.1114111
+        # msg.pose.orientation.z = 0.1451937
+        # msg.pose.orientation.w = 0.9723297
         self.publisher_.publish(msg)
         # print(request)
         return robot_pose_pb2.GetPoseAck
